@@ -6,11 +6,11 @@ import util
 def test1():
     positive = 0
     negative = 0
-    for i in range(0, 1000):
+    for i in range(0, 10):
         userModel = UserModel(100)
         data = [0.5, 0.4, 0.3, 0.9, 0.1]
         preference = userModel.getPreference(data)
-
+        print(preference)
         if preference > 0:
             positive += 1
         else:
@@ -22,7 +22,7 @@ def test1():
 def test2():
     userPropensitySize = 100
     userSize = 100
-    itemFeatureSize = 10
+    itemFeatureSize = 100
     itemSize = 100
     userList = []
 
@@ -59,7 +59,7 @@ def test4():
     for i in range(0, itemListSize):
         itemList.append(ItemModel(100))
     
-    userListSize = 5
+    userListSize = 20
     userList = []
     for i in range(0, userListSize):
         userList.append(UserModel(100))

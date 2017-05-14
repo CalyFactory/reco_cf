@@ -19,6 +19,14 @@ class UserModel:
             weight = random.random() - 0.5
             bias = random.random() - 0.5
             self.propensityList.append(PropensityModel(weight, bias))
+
+        for i in range(0, random.randrange(10,20)):
+            self.propensityList[random.randrange(0, self.propensitySize)].weight = random.random() / 2
+            self.propensityList[random.randrange(0, self.propensitySize)].bias = random.random() / 2 
+        
+        for i in range(0, random.randrange(10,20)):
+            self.propensityList[random.randrange(0, self.propensitySize)].weight = - (random.random() / 2 )
+            self.propensityList[random.randrange(0, self.propensitySize)].bias = - (random.random() / 2 )
     
     def getPreference(self, featureList):
         layer = [0] * self.propensitySize
@@ -28,9 +36,10 @@ class UserModel:
                 layer[k] = util.getSigmoidResult(
                     layer[k] + self.propensityList[k].getCalculateOutput(featureList[i])
                 )
+#            print(layer[k])
             preference += layer[k]
         
-        return util.getSigmoidResult(preference)
+        return (preference)
 
     def getPropensitySize(self):
         return self.propensitySize
